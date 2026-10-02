@@ -33,3 +33,8 @@ ChatGPTで生成した、目指す果樹園のイメージ画像（街と山の�
 
 ## 6. about-og-image.jpg（about.htmlのSNS共有用）
 about.htmlをSNSでシェアした際のプレビュー画像。about-orchard.jpgを1200×630pxにトリミングしたものです。
+
+## 7. nav-logo.png（ナビゲーション用・設定済み）
+各ページ左上のナビゲーションバーに表示する、角のモチーフだけを切り出したロゴマーク（背景透過PNG）。ヒーロー部分で使用している `logo.png`（鹿の頭部＋文字入り）とは別の、小さく表示するための簡略版です。
+
+**差し替える場合**：同じファイル名（`nav-logo.png`）で上書きするか、各HTML内の `<img src="assets/nav-logo.png">` の参照先を変更してください。表示サイズは `.site-nav__brand img` の `height` で調整できます。
