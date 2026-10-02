@@ -129,11 +129,17 @@
 
   .hero__photo {
     position: absolute;
-    inset: 0;
+    /* 上下に余白（オーバースキャン）を持たせ、パララックスで動かしても
+       端が見えないようにする。JS側の maxOffset と値を揃えること。 */
+    top: -70px;
+    bottom: -70px;
+    left: 0;
+    right: 0;
     background-image: var(--about-photo), var(--hero-gradient);
     background-size: cover;
     background-position: var(--about-photo-position, center);
     z-index: -2;
+    will-change: transform;
   }
 
   .hero__scrim {
@@ -338,6 +344,38 @@
   <footer class="site-footer">
     © 2026 Ezo Hazel Orchard in Hokkaido, Japan
   </footer>
+
+  <script>
+    // ヒーロー背景のパララックス効果。
+    // スクロール量の一部だけ写真を動かし、奥行きを演出する。
+    // 「動きを減らす」設定（prefers-reduced-motion）が有効な場合は無効化する。
+    (function () {
+      var photo = document.querySelector('.hero__photo');
+      if (!photo) return;
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
+      var maxOffset = 70; // px（.hero__photo の上下オーバースキャンと揃える）
+      var factor = 0.25;  // スクロール量に対する移動の割合
+      var ticking = false;
+
+      function update() {
+        var offset = Math.min(window.scrollY * factor, maxOffset);
+        photo.style.transform = 'translate3d(0, ' + offset + 'px, 0)';
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      update();
+    })();
+  </script>
 
 </body>
 </html>
