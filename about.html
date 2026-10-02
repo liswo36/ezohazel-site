@@ -121,7 +121,7 @@
     position: relative;
     min-height: 62svh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
     isolation: isolate;
@@ -146,7 +146,7 @@
   .hero__content {
     text-align: center;
     color: #FFFFFF;
-    padding: 2rem 1.5rem clamp(2.75rem, 8vh, 5rem);
+    padding: clamp(3rem, 10vh, 5rem) 1.5rem;
     max-width: 46rem;
     animation: rise-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
@@ -262,39 +262,6 @@
     .pillar__heading, .pillar__body { grid-column: 1; }
   }
 
-  /* ============ クロージング ============ */
-  .closing {
-    padding: 0 1.5rem clamp(4rem, 10vw, 6rem);
-    display: flex;
-    justify-content: center;
-  }
-
-  .closing__inner {
-    max-width: var(--measure);
-    width: 100%;
-    text-align: center;
-    padding: clamp(2rem, 6vw, 3rem);
-    background: var(--color-primary-container);
-    border-radius: 1.5rem;
-  }
-
-  .closing__body {
-    margin: 0 0 1.5rem;
-    font-size: 1.15rem;
-    line-height: 1.85;
-    font-weight: 500;
-    color: var(--color-on-primary-container);
-  }
-
-  .closing__link {
-    display: inline-block;
-    text-decoration: none;
-    font-weight: 700;
-    color: var(--color-on-primary-container);
-    border-bottom: 2px solid var(--color-on-primary-container);
-    padding-bottom: 0.15rem;
-  }
-
   /* ============ フッター ============ */
   .site-footer {
     padding: 2rem 1.5rem 2.5rem;
@@ -365,16 +332,6 @@
         </p>
       </article>
 
-    </div>
-  </section>
-
-  <section class="closing">
-    <div class="closing__inner">
-      <p class="closing__body">
-        北海道の森が育てる、本物のヘーゼルナッツ。<br>
-        Ezo Hazelは、この土地とともに歩んでいきます。
-      </p>
-      <a class="closing__link" href="index.html">トップページへ戻る</a>
     </div>
   </section>
 
