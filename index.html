@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ezo Hazel | 北海道発、世界へ届けるヘーゼルナッツ</title>
+<meta name="description" content="Ezo Hazelは、北海道の森が育てるヘーゼルナッツブランドです。土地の力で、世界の食卓へ。">
+
+<!-- SNSでシェアされた時のプレビュー用（OGP）。画像は hero 写真が決まったら assets/og-image.jpg に差し替え -->
+<meta property="og:title" content="Ezo Hazel | 北海道発、世界へ届けるヘーゼルナッツ">
+<meta property="og:description" content="北海道の森が育てる、本物のヘーゼルナッツ。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================
+     トークン（Material Design 3 を基調に設計）
+     色の意図：
+       primary   = 北海道の森の深緑
+       secondary = ヘーゼルナッツの殻の色（茶）
+       background= 明るく温かみのある生成り色
+     「色は明るく／文字はやや大きく読みやすく」の指示に合わせ、
+     本文は通常より大きめの基準フォントサイズを採用。
+     ============================================ */
+  :root {
+    --color-primary: #C49800;
+    --color-primary-container: #F6ECCF;
+    --color-on-primary-container: #16311C;
+    --color-secondary: #8A5A2B;
+    --color-background: #FAF8F2;
+    --color-surface: #FFFFFF;
+    --color-on-surface: #22281F;
+    --color-on-surface-variant: #46523F;
+    --color-outline: #C8D0C0;
+
+    --hero-photo: url('assets/hero-ezo-deer.jpg');
+    --hero-photo-position: 56% 35%; /* 鹿の顔・角が画面中央に来るよう調整。写真差し替え時はここも要調整 */
+    --hero-gradient: linear-gradient(165deg, #1B3B22 0%, #2F6B3A 45%, #4F7A3B 75%, #8A5A2B 100%);
+
+    --font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+    --measure: 36rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-size: 112.5%; /* 約18px基準。本文を少し大きめに */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: var(--color-background);
+    color: var(--color-on-surface);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* ============ ヒーロー ============ */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero__photo {
+    position: absolute;
+    inset: 0;
+    background-image: var(--hero-photo), var(--hero-gradient);
+    background-size: cover;
+    background-position: var(--hero-photo-position, center);
+    transform: scale(1.05);
+    transform-origin: var(--hero-photo-position, center);
+    z-index: -2;
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 20, 10, 0.05) 0%, rgba(10, 20, 10, 0.18) 45%, rgba(8, 16, 8, 0.8) 100%);
+    z-index: -1;
+  }
+
+  .hero__content {
+    text-align: center;
+    color: #FFFFFF;
+    padding: 2rem 1.5rem clamp(3rem, 9vh, 6rem);
+    max-width: 44rem;
+    animation: rise-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content { animation: none; }
+  }
+
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-mark {
+    margin: 0;
+    width: min(70vw, 340px);
+    height: auto;
+  }
+
+  .tagline {
+    margin: 1rem 0 0;
+    font-weight: 500;
+    font-size: clamp(1.05rem, 2.2vw, 1.375rem);
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* ============ ビジョン セクション ============ */
+  .vision {
+    padding: clamp(3.5rem, 10vw, 7rem) 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .vision__inner {
+    max-width: var(--measure);
+    width: 100%;
+  }
+
+  .vision__heading {
+    margin: 0 0 1.5rem;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--color-on-surface);
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .vision__heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-primary);
+  }
+
+  .vision__body {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.85;
+    color: var(--color-on-surface);
+  }
+
+  .vision__body + .vision__body {
+    margin-top: 1.25rem;
+  }
+
+  /* ============ フッター ============ */
+  .site-footer {
+    padding: 2rem 1.5rem 2.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-on-surface-variant);
+    border-top: 1px solid var(--color-outline);
+  }
+
+  /* ============ レスポンシブ ============ */
+  @media (max-width: 480px) {
+    .hero__content { padding: 1.5rem 1.25rem; }
+    .vision { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero__photo" aria-hidden="true"></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__content">
+      <img class="logo-mark" src="assets/logo.png" alt="Ezo Hazel Orchard">
+      <p class="tagline">北海道の森が育てる、本物のヘーゼルナッツ。</p>
+    </div>
+  </section>
+
+  <section class="vision">
+    <div class="vision__inner">
+      <h2 class="vision__heading">Vision</h2>
+      <p class="vision__body">
+        北海道の厳しい冬と短い夏が、密度の濃いヘーゼルナッツを育てます。大自然に導かれながら、一本一本の木と向き合う小さな農園から、すべては始まります。
+      </p>
+      <p class="vision__body">
+        Ezo Hazelは、味と栽培に妥協のないヘーゼルナッツブランドを目指しています。北海道から世界へ良質なヘーゼルナッツを届けます。
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    © 2026 Ezo Hazel Orchard in Hokkaido, Japan
+  </footer>
+
+</body>
+</html>
