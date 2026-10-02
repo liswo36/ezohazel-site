@@ -16,3 +16,12 @@
 
 ## 3. og-image.jpg（任意・SNS共有用）
 X（Twitter）やFacebook、LINEなどでURLをシェアした際に表示されるプレビュー画像。hero-ezo-deer.jpgが決まったら、それを1200×630px程度にトリミングしたものをこの名前で置くと、SNSでの見栄えが良くなります。
+
+## 4. favicon（設定済み）
+ブラウザタブ・ブックマーク・スマホのホーム画面アイコン用。金色の背景に白い鹿のシルエットのロゴから生成しています。
+
+- `/favicon.ico`（サイトのルート直下。16/32/48pxのマルチサイズ）
+- `assets/favicon-32x32.png` / `assets/favicon-16x16.png`
+- `assets/apple-touch-icon.png`（180×180px、iOSのホーム画面追加用）
+
+**差し替える場合**：元画像（正方形、できれば512px以上）を用意し、同様に `.ico`・各PNGサイズを書き出してください。
