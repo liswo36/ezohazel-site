@@ -25,3 +25,11 @@ X（Twitter）やFacebook、LINEなどでURLをシェアした際に表示され
 - `assets/apple-touch-icon.png`（180×180px、iOSのホーム画面追加用）
 
 **差し替える場合**：元画像（正方形、できれば512px以上）を用意し、同様に `.ico`・各PNGサイズを書き出してください。
+
+## 5. about-orchard.jpg（about.htmlで使用・設定済み）
+ChatGPTで生成した、目指す果樹園のイメージ画像（街と山の間に果樹園を配置するイメージ）。About / Storyページ（`about.html`）のヒーロー背景に使用しています。実際の自社圃場の写真ではなく、将来像のイメージであることに留意してください。
+
+差し替える場合は、同じファイル名で上書きするか、about.html内の `--about-photo` の参照先を変更してください。`--about-photo-position` で焦点位置を調整できます。
+
+## 6. about-og-image.jpg（about.htmlのSNS共有用）
+about.htmlをSNSでシェアした際のプレビュー画像。about-orchard.jpgを1200×630pxにトリミングしたものです。

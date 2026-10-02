@@ -75,6 +75,53 @@
     outline-offset: 3px;
   }
 
+  /* ============ ナビゲーション ============ */
+  .site-nav {
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .site-nav__brand {
+    display: block;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+  }
+
+  .site-nav__links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    transition: background-color 150ms ease;
+  }
+
+  .site-nav__link:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .site-nav__link[aria-current="page"] {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
   /* ============ ヒーロー ============ */
   .hero {
     position: relative;
@@ -100,7 +147,7 @@
   .hero__scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10, 20, 10, 0.05) 0%, rgba(10, 20, 10, 0.18) 45%, rgba(8, 16, 8, 0.8) 100%);
+    background: linear-gradient(180deg, rgba(10, 20, 10, 0.38) 0%, rgba(10, 20, 10, 0.05) 18%, rgba(10, 20, 10, 0.18) 45%, rgba(8, 16, 8, 0.8) 100%);
     z-index: -1;
   }
 
@@ -177,6 +224,17 @@
     margin-top: 1.25rem;
   }
 
+  .vision__link {
+    display: inline-block;
+    margin-top: 1.75rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-secondary);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 0.15rem;
+  }
+
   /* ============ フッター ============ */
   .site-footer {
     padding: 2rem 1.5rem 2.5rem;
@@ -196,6 +254,13 @@
 <body>
 
   <section class="hero">
+    <nav class="site-nav" aria-label="サイトナビゲーション">
+      <a class="site-nav__brand" href="index.html">EZO HAZEL</a>
+      <ul class="site-nav__links">
+        <li><a class="site-nav__link" href="index.html" aria-current="page">Home</a></li>
+        <li><a class="site-nav__link" href="about.html">About</a></li>
+      </ul>
+    </nav>
     <div class="hero__photo" aria-hidden="true"></div>
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="hero__content">
@@ -213,6 +278,7 @@
       <p class="vision__body">
         Ezo Hazelは、味と栽培に妥協のないヘーゼルナッツブランドを目指しています。北海道から世界へ良質なヘーゼルナッツを届けます。
       </p>
+      <a class="vision__link" href="about.html">私たちのストーリーを読む →</a>
     </div>
   </section>
 

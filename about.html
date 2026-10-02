@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Ezo Hazel — なぜ、北海道でヘーゼルナッツなのか</title>
+<meta name="description" content="Ezo Hazelが北海道でヘーゼルナッツ栽培を始めた理由。気候、人と野生動物の共存、そして持続可能な地域経済。3つの想いをご紹介します。">
+
+<meta property="og:title" content="About | Ezo Hazel — なぜ、北海道でヘーゼルナッツなのか">
+<meta property="og:description" content="気候、共存、持続可能性。Ezo Hazelが北海道で果樹園を営む3つの理由。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="assets/about-og-image.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================
+     トークン（index.html と共通。Material Design 3 を基調に設計）
+     ============================================ */
+  :root {
+    --color-primary: #C49800;
+    --color-primary-container: #F6ECCF;
+    --color-on-primary-container: #16311C;
+    --color-secondary: #8A5A2B;
+    --color-background: #FAF8F2;
+    --color-surface: #FFFFFF;
+    --color-on-surface: #22281F;
+    --color-on-surface-variant: #46523F;
+    --color-outline: #C8D0C0;
+
+    --about-photo: url('assets/about-orchard.jpg');
+    --about-photo-position: center 62%;
+    --hero-gradient: linear-gradient(165deg, #1B3B22 0%, #2F6B3A 45%, #4F7A3B 75%, #8A5A2B 100%);
+
+    --font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+    --measure: 36rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-size: 112.5%; /* 約18px基準。本文を少し大きめに */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: var(--color-background);
+    color: var(--color-on-surface);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* ============ ナビゲーション ============ */
+  .site-nav {
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .site-nav__brand {
+    display: block;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+  }
+
+  .site-nav__links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    transition: background-color 150ms ease;
+  }
+
+  .site-nav__link:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .site-nav__link[aria-current="page"] {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* ============ ヒーロー ============ */
+  .hero {
+    position: relative;
+    min-height: 62svh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero__photo {
+    position: absolute;
+    inset: 0;
+    background-image: var(--about-photo), var(--hero-gradient);
+    background-size: cover;
+    background-position: var(--about-photo-position, center);
+    z-index: -2;
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 20, 10, 0.42) 0%, rgba(10, 20, 10, 0.08) 22%, rgba(10, 20, 10, 0.2) 55%, rgba(8, 16, 8, 0.78) 100%);
+    z-index: -1;
+  }
+
+  .hero__content {
+    text-align: center;
+    color: #FFFFFF;
+    padding: 2rem 1.5rem clamp(2.75rem, 8vh, 5rem);
+    max-width: 46rem;
+    animation: rise-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content { animation: none; }
+  }
+
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero__overline {
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    color: var(--color-primary-container);
+  }
+
+  .hero__title {
+    margin: 0;
+    font-weight: 900;
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    line-height: 1.35;
+  }
+
+  .hero__subtitle {
+    margin: 1rem 0 0;
+    font-weight: 500;
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* ============ イントロ ============ */
+  .intro {
+    padding: clamp(3rem, 9vw, 5.5rem) 1.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .intro__inner {
+    max-width: var(--measure);
+    width: 100%;
+    text-align: center;
+  }
+
+  .intro__body {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* ============ ストーリー（3つの理由） ============ */
+  .story {
+    padding: clamp(3rem, 9vw, 5.5rem) 1.5rem clamp(3.5rem, 10vw, 6rem);
+    display: flex;
+    justify-content: center;
+  }
+
+  .story__inner {
+    max-width: 48rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 7vw, 3.5rem);
+  }
+
+  .pillar {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: clamp(1.25rem, 4vw, 2rem);
+    row-gap: 0.75rem;
+  }
+
+  .pillar__index {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    line-height: 1;
+    padding-top: 0.25rem;
+  }
+
+  .pillar__heading {
+    grid-column: 2;
+    margin: 0;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    color: var(--color-on-surface);
+    position: relative;
+    padding-bottom: 0.65rem;
+  }
+
+  .pillar__heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.5rem;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-primary);
+  }
+
+  .pillar__body {
+    grid-column: 2;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--color-on-surface);
+  }
+
+  @media (max-width: 560px) {
+    .pillar {
+      grid-template-columns: 1fr;
+    }
+    .pillar__index { padding-top: 0; }
+    .pillar__heading, .pillar__body { grid-column: 1; }
+  }
+
+  /* ============ クロージング ============ */
+  .closing {
+    padding: 0 1.5rem clamp(4rem, 10vw, 6rem);
+    display: flex;
+    justify-content: center;
+  }
+
+  .closing__inner {
+    max-width: var(--measure);
+    width: 100%;
+    text-align: center;
+    padding: clamp(2rem, 6vw, 3rem);
+    background: var(--color-primary-container);
+    border-radius: 1.5rem;
+  }
+
+  .closing__body {
+    margin: 0 0 1.5rem;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    font-weight: 500;
+    color: var(--color-on-primary-container);
+  }
+
+  .closing__link {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-on-primary-container);
+    border-bottom: 2px solid var(--color-on-primary-container);
+    padding-bottom: 0.15rem;
+  }
+
+  /* ============ フッター ============ */
+  .site-footer {
+    padding: 2rem 1.5rem 2.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-on-surface-variant);
+    border-top: 1px solid var(--color-outline);
+  }
+
+  /* ============ レスポンシブ ============ */
+  @media (max-width: 480px) {
+    .hero__content { padding: 1.5rem 1.25rem; }
+    .intro { padding: 2.5rem 1.25rem 0; }
+    .story { padding: 2.5rem 1.25rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <nav class="site-nav" aria-label="サイトナビゲーション">
+      <a class="site-nav__brand" href="index.html">EZO HAZEL</a>
+      <ul class="site-nav__links">
+        <li><a class="site-nav__link" href="index.html">Home</a></li>
+        <li><a class="site-nav__link" href="about.html" aria-current="page">About</a></li>
+      </ul>
+    </nav>
+    <div class="hero__photo" aria-hidden="true"></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__overline">ABOUT EZO HAZEL</p>
+      <h1 class="hero__title">山と街のあいだに、<br>果樹園を。</h1>
+      <p class="hero__subtitle">気候、共存、そして持続可能性。ここで果樹園を営む、3つの理由。</p>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="intro__inner">
+      <p class="intro__body">
+        なぜ、北海道でヘーゼルナッツなのか。なぜ、山のふもとに果樹園をつくるのか。<br>
+        Ezo Hazelがこの場所を選んだ理由は、ひとつではありません。
+      </p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story__inner">
+
+      <article class="pillar">
+        <span class="pillar__index" aria-hidden="true">01</span>
+        <h2 class="pillar__heading">オレゴンに似た、北海道南部の気候風土</h2>
+        <p class="pillar__body">
+          北海道南部は、世界有数のヘーゼルナッツ産地であるアメリカ・オレゴン州と気候条件が近く、冷涼な気候と適度な降水量に恵まれています。この土地が本来持つ力を活かすこと。それが、良質な実りへの最も確かな道だと考えています。
+        </p>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__index" aria-hidden="true">02</span>
+        <h2 class="pillar__heading">街と山のあいだに、緩衝地帯を</h2>
+        <p class="pillar__body">
+          果樹園を、人が暮らす街と野生動物が生きる山のあいだに設ける。それは収穫を守るための工夫であると同時に、人と自然がそれぞれの領域を尊重しながら共存していくための、ひとつの環境づくりでもあります。
+        </p>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__index" aria-hidden="true">03</span>
+        <h2 class="pillar__heading">持続可能な産業として、地域を支える</h2>
+        <p class="pillar__body">
+          一度きりの収穫で終わらせず、長く続けられる栽培と収穫のしくみを確立すること。それこそが、この土地と地方都市の経済を次の世代へつなぐ、私たちの役目だと考えています。
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="closing__inner">
+      <p class="closing__body">
+        北海道の森が育てる、本物のヘーゼルナッツ。<br>
+        Ezo Hazelは、この土地とともに歩んでいきます。
+      </p>
+      <a class="closing__link" href="index.html">トップページへ戻る</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    © 2026 Ezo Hazel Orchard in Hokkaido, Japan
+  </footer>
+
+</body>
+</html>

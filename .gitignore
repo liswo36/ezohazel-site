@@ -1,2 +1,3 @@
 # チャットプレビュー専用ファイル（画像をbase64埋め込みした一時確認用）。本番サイトには不要。
 preview.html
+about-preview.html
