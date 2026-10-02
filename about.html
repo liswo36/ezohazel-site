@@ -80,11 +80,13 @@
 
   .site-nav__brand {
     display: block;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: 0.04em;
+    line-height: 0;
+  }
+
+  .site-nav__brand img {
+    display: block;
+    height: clamp(2.5rem, 7vw, 3.25rem);
+    width: auto;
   }
 
   .site-nav__links {
@@ -158,26 +160,11 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero__overline {
-    margin: 0 0 0.75rem;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.18em;
-    color: var(--color-primary-container);
-  }
-
   .hero__title {
     margin: 0;
     font-weight: 900;
     font-size: clamp(1.9rem, 5vw, 3rem);
     line-height: 1.35;
-  }
-
-  .hero__subtitle {
-    margin: 1rem 0 0;
-    font-weight: 500;
-    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-    color: rgba(255, 255, 255, 0.92);
   }
 
   /* ============ イントロ ============ */
@@ -191,6 +178,14 @@
     max-width: var(--measure);
     width: 100%;
     text-align: center;
+  }
+
+  .intro__overline {
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    color: var(--color-primary);
   }
 
   .intro__body {
@@ -321,7 +316,7 @@
 
   <section class="hero">
     <nav class="site-nav" aria-label="サイトナビゲーション">
-      <a class="site-nav__brand" href="index.html">EZO HAZEL</a>
+      <a class="site-nav__brand" href="index.html"><img src="assets/logo.png" alt="Ezo Hazel Orchard"></a>
       <ul class="site-nav__links">
         <li><a class="site-nav__link" href="index.html">Home</a></li>
         <li><a class="site-nav__link" href="about.html" aria-current="page">About</a></li>
@@ -330,17 +325,15 @@
     <div class="hero__photo" aria-hidden="true"></div>
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="hero__content">
-      <p class="hero__overline">ABOUT EZO HAZEL</p>
       <h1 class="hero__title">山と街のあいだに、<br>果樹園を。</h1>
-      <p class="hero__subtitle">気候、共存、そして持続可能性。ここで果樹園を営む、3つの理由。</p>
     </div>
   </section>
 
   <section class="intro">
     <div class="intro__inner">
+      <p class="intro__overline">ABOUT EZO HAZEL</p>
       <p class="intro__body">
-        なぜ、北海道でヘーゼルナッツなのか。なぜ、山のふもとに果樹園をつくるのか。<br>
-        Ezo Hazelがこの場所を選んだ理由は、ひとつではありません。
+        気候、共存、そして持続可能性。ここで果樹園を営む、3つの理由。
       </p>
     </div>
   </section>
