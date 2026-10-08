@@ -178,6 +178,42 @@
     color: rgba(255, 255, 255, 0.92);
   }
 
+  /* ============ 準備中の表示（果樹園はまだ準備中であることを伝える） ============ */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--color-on-primary-container);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .status-badge__dot {
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+
+  .notice {
+    margin: 1.75rem 0 0;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border-left: 6px solid var(--color-primary);
+    background: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .notice strong { font-weight: 700; }
+
   /* ============ ビジョン セクション ============ */
   .vision {
     padding: clamp(3.5rem, 10vw, 7rem) 1.5rem;
@@ -262,6 +298,7 @@
     <div class="hero__content">
       <img class="logo-mark" src="assets/logo.png" alt="Ezo Hazel Orchard">
       <p class="tagline">北海道の森が育てる、本物のヘーゼルナッツ。</p>
+      <p class="status-badge" role="status"><span class="status-badge__dot" aria-hidden="true"></span>果樹園は現在、準備中です</p>
     </div>
   </section>
 
@@ -274,6 +311,7 @@
       <p class="vision__body">
         Ezo Hazelは、味と栽培に妥協のないヘーゼルナッツブランドを目指しています。北海道から世界へ良質なヘーゼルナッツを届けます。
       </p>
+      <p class="notice" role="note"><strong>果樹園は、現在、準備中です。</strong>畑づくりや栽培の様子など、準備が整ったものから、このサイトでお知らせしていきます。</p>
       <a class="vision__link" href="about.html">私たちのストーリーを読む →</a>
     </div>
   </section>

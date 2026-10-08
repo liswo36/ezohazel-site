@@ -268,6 +268,42 @@
     .pillar__heading, .pillar__body { grid-column: 1; }
   }
 
+  /* ============ 準備中の表示（果樹園はまだ準備中であることを伝える） ============ */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--color-on-primary-container);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .status-badge__dot {
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+
+  .notice {
+    margin: 1.75rem 0 0;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border-left: 6px solid var(--color-primary);
+    background: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .notice strong { font-weight: 700; }
+
   /* ============ フッター ============ */
   .site-footer {
     padding: 2rem 1.5rem 2.5rem;
@@ -308,6 +344,7 @@
       <p class="intro__body">
         気候、共存、そして持続可能性。ここで果樹園を営む、3つの理由。
       </p>
+      <p class="notice" role="note"><strong>果樹園は、現在、準備中です。</strong>畑づくりや栽培の様子など、準備が整ったものから、このサイトでお知らせしていきます。</p>
     </div>
   </section>
 
