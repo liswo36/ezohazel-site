@@ -61,6 +61,29 @@ for (const file of pages) {
     const metas = [...read(file).matchAll(/<meta\b[^>]*\bname=["']robots["'][^>]*>/gi)].map((m) => m[0]);
     for (const m of metas) assert.doesNotMatch(m, /noindex/i);
   });
+
+  // OGP：X・Facebook・LINE は画像に絶対URLを求める（資料 claude/ezohazel-site-seo.md の 4）
+  const metaContent = (html, attr, key) => {
+    const tag = [...html.matchAll(/<meta\b[^>]*>/gi)]
+      .map((m) => m[0])
+      .find((t) => new RegExp(`\\b${attr}=["']${key}["']`, 'i').test(t));
+    return tag?.match(/\bcontent=["']([^"']*)["']/i)?.[1];
+  };
+
+  test(`${file}：og:image が絶対URLで、指す画像がリポジトリにある`, () => {
+    const img = metaContent(read(file), 'property', 'og:image');
+    assert.ok(img, 'og:image がない');
+    assert.ok(img.startsWith(BASE), `${img} は ${BASE} で始まる必要がある`);
+    assert.ok(existsSync(join(ROOT, img.slice(BASE.length))), `${img} の実体がない`);
+  });
+
+  test(`${file}：og:url が canonical と一致する`, () => {
+    assert.equal(metaContent(read(file), 'property', 'og:url'), expectedUrl(file));
+  });
+
+  test(`${file}：twitter:card が summary_large_image`, () => {
+    assert.equal(metaContent(read(file), 'name', 'twitter:card'), 'summary_large_image');
+  });
 }
 
 test('404.html：存在しないURLを 404 にする（Pages の SPA 扱いをやめる）', () => {
