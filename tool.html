@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool | Ezo Hazel — 果樹園計画ツール EZO HAZEL PLANTNER</title>
+<meta name="description" content="Ezo Hazelは、ヘーゼルナッツ果樹園の植え付け計画を作るツール「EZO HAZEL PLANTNER」を開発しました。">
+
+<meta property="og:title" content="Tool | Ezo Hazel — 果樹園計画ツール EZO HAZEL PLANTNER">
+<meta property="og:description" content="Ezo Hazelが開発した、果樹園計画ツール EZO HAZEL PLANTNER。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="assets/og-image.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================
+     トークン（index.html と共通。Material Design 3 を基調に設計）
+     ============================================ */
+  :root {
+    --color-primary: #C49800;
+    --color-primary-container: #F6ECCF;
+    --color-on-primary-container: #16311C;
+    --color-secondary: #8A5A2B;
+    --color-background: #FAF8F2;
+    --color-surface: #FFFFFF;
+    --color-on-surface: #22281F;
+    --color-on-surface-variant: #46523F;
+    --color-outline: #C8D0C0;
+
+    --about-photo: url('assets/about-orchard.jpg');
+    --about-photo-position: center 62%;
+    --hero-gradient: linear-gradient(165deg, #1B3B22 0%, #2F6B3A 45%, #4F7A3B 75%, #8A5A2B 100%);
+
+    --font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+    --measure: 36rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-size: 112.5%; /* 約18px基準。本文を少し大きめに */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: var(--color-background);
+    color: var(--color-on-surface);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* ============ ナビゲーション ============ */
+  .site-nav {
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .site-nav__brand {
+    display: block;
+    line-height: 0;
+  }
+
+  .site-nav__brand img {
+    display: block;
+    height: clamp(2.5rem, 7vw, 3.25rem);
+    width: auto;
+  }
+
+  .site-nav__links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    transition: background-color 150ms ease;
+  }
+
+  .site-nav__link:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .site-nav__link[aria-current="page"] {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+
+  /* ============ Tool ページ ============ */
+  .tool { padding: clamp(5.5rem, 14vw, 8rem) 1.5rem clamp(3.5rem, 10vw, 6rem); display: flex; justify-content: center; }
+  .tool__inner { max-width: var(--measure); width: 100%; text-align: center; }
+  .tool__logo { display: block; width: min(100%, 22rem); height: auto; margin: 0 auto 1.75rem; }
+  .tool__title { margin: 0 0 1rem; font-weight: 900; font-size: clamp(1.15rem, 4vw, 1.9rem); line-height: 1.5; color: var(--color-on-surface); }
+  .tool__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; list-style: none; margin: 2rem 0 0; padding: 0; }
+  .tool__link { display: inline-block; min-height: 3rem; padding: 0.75rem 1.5rem; border-radius: 999px; font-weight: 700; font-size: 1.05rem; text-decoration: none; border: 2px solid var(--color-primary); color: var(--color-on-primary-container); background: var(--color-surface); }
+  .tool__link--main { background: var(--color-primary-container); }
+  .tool__link:hover { background: var(--color-primary-container); }
+  /* このページは写真のヒーローがないので、ナビを濃い色にする */
+  .site-nav--light .site-nav__brand img { filter: brightness(0) opacity(0.8); }
+  .site-nav--light .site-nav__link { color: var(--color-on-surface); }
+  .site-nav--light .site-nav__link:hover { background: var(--color-primary-container); }
+  .site-nav--light .site-nav__link[aria-current="page"] { background: var(--color-primary-container); }
+  /* ============ 準備中の表示（果樹園はまだ準備中であることを伝える） ============ */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--color-on-primary-container);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .status-badge__dot {
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+
+  .notice {
+    margin: 1.75rem 0 0;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border-left: 6px solid var(--color-primary);
+    background: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .notice strong { font-weight: 700; }
+
+  /* ============ フッター ============ */
+  .site-footer {
+    padding: 2rem 1.5rem 2.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-on-surface-variant);
+    border-top: 1px solid var(--color-outline);
+  }
+
+  /* ============ レスポンシブ ============ */
+  @media (max-width: 480px) {
+    .hero__content { padding: 1.5rem 1.25rem; }
+    .intro { padding: 2.5rem 1.25rem 0; }
+    .story { padding: 2.5rem 1.25rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="site-nav site-nav--light" aria-label="サイトナビゲーション">
+    <a class="site-nav__brand" href="index.html"><img src="assets/nav-logo.png" alt="Ezo Hazel Orchard"></a>
+    <ul class="site-nav__links">
+      <li><a class="site-nav__link" href="index.html">Home</a></li>
+      <li><a class="site-nav__link" href="about.html">About</a></li>
+      <li><a class="site-nav__link" href="tool.html" aria-current="page">Tool</a></li>
+    </ul>
+  </nav>
+
+  <main class="tool">
+    <div class="tool__inner">
+      <img class="tool__logo" src="assets/plantner-logo.svg" alt="EZO HAZEL PLANTNER">
+      <h1 class="tool__title">果樹園計画ツール<br>EZO HAZEL PLANTNER を開発</h1>
+      <ul class="tool__links">
+        <li><a class="tool__link tool__link--main" href="https://plan.ezohazel.com/?lang=ja">ツールを使う</a></li>
+        <li><a class="tool__link" href="https://plantner.ezohazel.com/">公式サイト</a></li>
+        <li><a class="tool__link" href="https://plantner.ezohazel.com/en/">English</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    © 2026 Ezo Hazel Orchard in Hokkaido, Japan
+  </footer>
+
+</body>
+</html>
