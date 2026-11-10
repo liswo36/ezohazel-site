@@ -1,0 +1,5 @@
+# 配布データ（区画データなど）。ツール（plan.ezohazel.com・確認用ページ）から読めるようにする。公的に公開されたデータの再配布で、個人に関わる項目は含まない。
+/data/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff
